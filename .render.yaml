@@ -1,0 +1,13 @@
+services:
+  - type: web
+    name: shopify-wfirma
+    runtime: python
+    buildCommand: pip install -r requirements.txt
+    startCommand: uvicorn main:app --host 0.0.0.0 --port 10000
+    envVars:
+      - key: SHOPIFY_API_KEY
+        value: your_api_key
+      - key: SHOPIFY_API_PASSWORD
+        value: your_api_password
+      - key: SHOPIFY_STORE
+        value: yourstorename
