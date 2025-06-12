@@ -11,8 +11,8 @@ import requests
 
 app = FastAPI()
 
-# Dane do połączenia z MySQL
-DATABASE_URL = "mysql+pymysql://39199104_shopify:Elapiskorz28@serwer2486909.home.pl:3306/39199104_shopify"
+# Połączenie z Supabase (PostgreSQL)
+DATABASE_URL = os.getenv("DATABASE_URL")
 
 engine = create_engine(DATABASE_URL)
 SessionLocal = sessionmaker(autocommit=False, autoflush=False, bind=engine)
