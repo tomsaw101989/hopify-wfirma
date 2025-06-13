@@ -71,7 +71,7 @@ def sync_orders():
     for order in data.get("orders", []):
         customer_name = order["customer"].get("first_name", "") + " " + order["customer"].get("last_name", "")
         items = [item["title"] for item in order.get("line_items", [])]
-        existing = db.query(Order).filter_by(number=order["order_number"]).first()
+        existing = db.query(Order).filter_by(number=str(order["order_number"])).first()
         if not existing:
             new_order = Order(
                 number=order["order_number"],
