@@ -10,6 +10,15 @@ import os
 import requests
 
 app = FastAPI()
+from fastapi.middleware.cors import CORSMiddleware
+
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=["http://localhost:5174"],  # frontend lokalnie
+    allow_credentials=True,
+    allow_methods=["*"],
+    allow_headers=["*"],
+)
 
 # Połączenie z Supabase (PostgreSQL)
 DATABASE_URL = os.getenv("DATABASE_URL")
